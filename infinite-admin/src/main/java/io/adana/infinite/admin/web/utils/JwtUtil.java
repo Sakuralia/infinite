@@ -3,6 +3,7 @@ package io.adana.infinite.admin.web.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -21,6 +22,7 @@ import java.util.function.Function;
  */
 @ConfigurationProperties(prefix = "infinite.jwt")
 @Component
+@Data
 public class JwtUtil {
 
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
@@ -144,29 +146,5 @@ public class JwtUtil {
                 .parseClaimsJws(token)
                 .getBody();
         return claimsResolver.apply(claims);
-    }
-
-    public String getHeader() {
-        return header;
-    }
-
-    public void setHeader(String header) {
-        this.header = header;
-    }
-
-    public String getSecret() {
-        return secret;
-    }
-
-    public void setSecret(String secret) {
-        this.secret = secret;
-    }
-
-    public Long getExpiration() {
-        return expiration;
-    }
-
-    public void setExpiration(Long expiration) {
-        this.expiration = expiration;
     }
 }
