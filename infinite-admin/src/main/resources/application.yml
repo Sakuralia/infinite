@@ -32,7 +32,7 @@ spring:
     user:
       name: root
       password: Admin&20200804
-      roles: admin
+      roles: ADMIN
 logging:
   level:
     root: info                          #DEBUG,INFO,WARN,ERROR
@@ -46,4 +46,4 @@ infinite:
   jwt:
     secret: WoJf6Mi1laQp7vHuIHSvcg==
     expiration: 604800 # token有效时长，7天，单位秒
-    header: token
+    header: Authorization

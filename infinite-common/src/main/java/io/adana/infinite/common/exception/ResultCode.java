@@ -6,10 +6,12 @@ package io.adana.infinite.common.exception;
  * @date 2020-07-22 01:09
  */
 public enum ResultCode {
-    RESULT_NOT_FOUND(4, "not found"),
-    RESULT_ERROR(5, "error"),
-    RESULT_OK(9, "success"),
-    RESULT_EXIST(1, "the recode exists");
+    REQUEST_PARAM_ERROR(400, "parameters error"),
+    RESOURCE_FORBIDDEN(403, "access denied "),
+    RESULT_NOT_FOUND(404, "not found"),
+    RESULT_ERROR(500, "error"),
+    RESULT_OK(999, "success"),
+    RESULT_EXIST(111, "the recode exists");
 
     private final int code;
     private final String msg;

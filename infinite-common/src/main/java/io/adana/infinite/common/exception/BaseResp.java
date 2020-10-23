@@ -1,16 +1,24 @@
 package io.adana.infinite.common.exception;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 
+/**
+ * @author sakura
+ * @description <p>
+ * 统一返回前端数据格式类
+ * </p>
+ */
 @JsonPropertyOrder({"code", "msg", "data"})
 public class BaseResp<T> implements Serializable {
 
+    @ApiModelProperty(value = "返回代码")
     private int code;
-
+    @ApiModelProperty(value = "返回消息内容")
     private String msg;
-
+    @ApiModelProperty(value = "返回数据内容")
     private T data;
 
     public BaseResp() {

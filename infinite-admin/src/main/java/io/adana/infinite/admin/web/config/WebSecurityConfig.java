@@ -1,13 +1,21 @@
 package io.adana.infinite.admin.web.config;
 
+import io.adana.infinite.admin.web.handler.ILogoutSuccessHandler;
+import io.adana.infinite.auth.service.UserAuthenticationProvider;
+import io.adana.infinite.user.api.IUserDetailApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+
+import javax.annotation.Resource;
 
 /**
  * @author Lenovo
@@ -21,25 +29,48 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private ILogoutSuccessHandler iLogoutSuccessHandler;
 
-//    @Autowired
-//    private AuthenticationManager authenticationManager;
-//
-//    @Autowired
-//    private IUserDetailApi iUserDetailApi;
+    @Resource
+    private AuthenticationManager authenticationManager;
 
+    @Resource
+    private IUserDetailApi iUserDetailApi;
+
+    /**
+     * configure the permission controller of urls.
+     *
+     * @param http Spring Security's XML &lt;http&gt; element in the namespace configuration
+     * @throws Exception some exceptions
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/index.html").loginProcessingUrl("/login")
+        http.formLogin()
+                // 登录页面
+                .loginPage("/login.html")
+                .loginProcessingUrl("/login")
+                .successHandler(null)
+                .failureHandler(null)
                 .and()
                 .authorizeRequests()
                 .antMatchers("/index.html", "/login", "/resources").permitAll()
                 .anyRequest()       //access every requests.
                 .authenticated()    //need to authenticate identity
                 .and()
-                .logout().invalidateHttpSession(true).deleteCookies("JSESSIONID")
+                .logout()
+                // 登出成功
                 .logoutSuccessHandler(iLogoutSuccessHandler)
                 .and()
-                .csrf().disable();
+                // 关闭csrf
+                .csrf().disable()
+                // 基于token
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .headers()
+                .frameOptions()
+                .disable()
+                .and();
+        //disabled cache.
+        http.headers().cacheControl();
     }
 
     @Override
@@ -47,7 +78,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         /**
          * the function of the provider which authenticate user according the context of name and password.
          */
-        auth.authenticationProvider(null);
+        auth.authenticationProvider(new UserAuthenticationProvider(iUserDetailApi));
         /**
          * the customer's provider is used for signing in.
          */
@@ -55,7 +86,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers(HttpMethod.GET,
+                "/swagger**/**",
+                "/admin/**",
+                "/**/*.html",
+                "/**/*.css",
+                "/**/*.js",
+                "/swagger-ui.html",
+                "/webjars/**",
+                "/v3/**",
+                "/doc.html");
+    }
+
+    @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+
 }

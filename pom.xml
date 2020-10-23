@@ -27,6 +27,7 @@
         <hibernate-validator.version>6.1.0.Final</hibernate-validator.version>
         <joda.time.version>2.9.9</joda.time.version>
         <mysql.version>8.0.16</mysql.version>
+        <swagger.version>3.0.0</swagger.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -73,6 +74,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>${swagger.version}</version>
         </dependency>
     </dependencies>
     <dependencyManagement>

@@ -1,6 +1,7 @@
 package io.adana.infinite.auth.service;
 
 import io.adana.infinite.user.api.IUserDetailApi;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -17,7 +18,7 @@ import java.util.List;
  * @date 2020/10/22 19:02
  */
 public class UserAuthenticationProvider implements AuthenticationProvider {
-
+    @Reference
     private IUserDetailApi iUserDetailApi;
 
     public UserAuthenticationProvider(IUserDetailApi iUserDetailApi) {
