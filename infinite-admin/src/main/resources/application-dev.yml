@@ -15,3 +15,6 @@ spring:
       pool-name: HikariCPDataSource
   #    schema: classpath:db/admin_schema.sql
 #    data: classpath:db/admin_data.sql
+springfox:
+  documentation:
+    enabled: true

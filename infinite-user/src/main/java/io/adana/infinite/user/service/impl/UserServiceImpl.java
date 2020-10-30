@@ -4,14 +4,17 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.adana.infinite.user.dao.IUserMapper;
 import io.adana.infinite.user.domain.UserEntity;
 import io.adana.infinite.user.service.IUserService;
-import org.springframework.stereotype.Service;
+import org.apache.dubbo.config.annotation.Service;
 
 /**
- * @author admin
+ * @author sakura
  * @version 1.0
- * @description
+ * @description <p>
+ * the implement service class of user.
+ * </p>
  * @date 2020/10/21 19:01
  */
-@Service
+@Service(protocol = "dubbo", version = "1.0.0")
 public class UserServiceImpl extends ServiceImpl<IUserMapper, UserEntity> implements IUserService {
+
 }

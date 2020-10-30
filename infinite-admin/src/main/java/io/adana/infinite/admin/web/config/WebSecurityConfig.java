@@ -51,15 +51,31 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(null)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/index.html", "/login", "/resources").permitAll()
+                .antMatchers("/",
+                        "/index.html",
+                        "/login",
+                        "/resources",
+                        "/favicon.ico",
+                        "/**/*.html",
+                        "/**/*.css",
+                        "/**/*.js",
+                        "/swagger-resources/**"
+                ).permitAll()
+                // send every requests with the method type of options
+                .antMatchers(HttpMethod.OPTIONS)
+                .permitAll()
                 .anyRequest()       //access every requests.
                 .authenticated()    //need to authenticate identity
                 .and()
                 .logout()
-                // 登出成功
+                // logout
                 .logoutSuccessHandler(iLogoutSuccessHandler)
                 .and()
-                // 关闭csrf
+                // configure the expired time that is one hour.
+                .rememberMe()
+                .tokenValiditySeconds(3600)
+                .and()
+                // close csrf
                 .csrf().disable()
                 // 基于token
                 .sessionManagement()
@@ -82,6 +98,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         /**
          * the customer's provider is used for signing in.
          */
+        // todo 编写对应的提供类
         auth.authenticationProvider(null);
     }
 
