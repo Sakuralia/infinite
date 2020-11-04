@@ -59,6 +59,10 @@ public class BaseEntity implements Serializable {
      * the detail description of the record
      */
     private String description;
+    /**
+     * the flag which represents that is deleted.
+     */
+    private Integer delFlag;
 
     public BaseEntity() {
     }
@@ -167,5 +171,13 @@ public class BaseEntity implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getDelFlag() {
+        return delFlag;
+    }
+
+    public void setDelFlag(Integer delFlag) {
+        this.delFlag = delFlag;
     }
 }

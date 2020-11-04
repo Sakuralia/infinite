@@ -18,8 +18,9 @@ import java.util.List;
  * @date 2020/10/22 19:02
  */
 public class UserAuthenticationProvider implements AuthenticationProvider {
-    @Reference(protocol = "dubbo", version = "1.0.0")
+    @Reference(version = "1.0.0")
     private IUserDetailApi iUserDetailApi;
+
 
     public UserAuthenticationProvider(IUserDetailApi iUserDetailApi) {
         this.iUserDetailApi = iUserDetailApi;

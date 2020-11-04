@@ -14,7 +14,7 @@ import org.apache.dubbo.config.annotation.Service;
  * </p>
  * @date 2020/10/21 19:01
  */
-@Service(protocol = "dubbo", version = "1.0.0")
+@Service(version = "1.0.0", group = "user")
 public class UserServiceImpl extends ServiceImpl<IUserMapper, UserEntity> implements IUserService {
 
 }

@@ -3,6 +3,8 @@ package io.adana.infinite.user.domain;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.adana.infinite.common.domain.BaseEntity;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -22,11 +24,13 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Accessors(chain = true)
 @TableName("t_user")
+@ApiModel(description = "用户记录表")
 public class UserEntity extends BaseEntity {
 
     /**
      * user_name
      */
+    @ApiModelProperty(value = "用户真实名")
     @TableField("f_user_name")
     private String userName;
     /**
@@ -96,7 +100,7 @@ public class UserEntity extends BaseEntity {
      * Address
      */
     @TableField("f_connect_address")
-    private String ConnectAddress;
+    private String connectAddress;
     /**
      * the department identification
      */

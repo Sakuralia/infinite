@@ -16,9 +16,12 @@ public enum ResultCode {
     //============== service ===============
     SERVICE_ERROR(555, "the service errors"),
     //============== user ==================
+    LOGIN_PARAMS_ERROR(881, "params errors in which login.For detail,look the api doc"),
+    LOGIN_ERROR(885, "the sign-on service errors"),
+    LOGIN_CAPTCHA(884, "the verification code errors"),
     USER_NOT_FOUND(886, "the user is not existed"),
-    USER_LOCKED(887, "the account is locked");
-
+    USER_LOCKED(887, "the account is locked"),
+    ;
     private final int code;
     private final String msg;
 

@@ -12,7 +12,7 @@ spring:
   profiles:
     active: dev
   application:
-    name: admin-app
+    name: infinite-admin
   cloud:
     #nacos 注册中心
     nacos:
@@ -41,15 +41,26 @@ spring:
       name: root
       password: Admin&20200804
       roles: ADMIN
+  main:
+    allow-bean-definition-overriding: true #后发现的bean会覆盖之前相同名称的bean
 logging:
   level:
     root: info                          #DEBUG,INFO,WARN,ERROR
     org.springframework.security: info
 dubbo:
+  protocol:
+    name: dubbo
+    port: -1
   registry:
     address: spring-cloud://127.0.0.1:8848
   cloud:
-    subscribed-services: ''
+    subscribed-services: dubbo-infinite-admin
+  consumer:
+    check: false #close to subscribe services which check or not automatically
+  application:
+    name: infinite-admin
+    qos-enable: false
+    qos-accept-foreign-ip: false
 infinite:
   jwt:
     secret: WoJf6Mi1laQp7vHuIHSvcg==
