@@ -4,8 +4,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Data;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -23,9 +22,9 @@ import java.util.function.Function;
 @ConfigurationProperties(prefix = "infinite.jwt")
 @Component
 @Data
+@Slf4j
 public class JwtUtil {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
     /**
      * secret key
      */
@@ -46,7 +45,7 @@ public class JwtUtil {
      * @return token
      */
     public String generateToken(UserDetails userDetails) {
-        Map<String, Object> claims = new HashMap<>();
+        Map<String, Object> claims = new HashMap<>(8);
         claims.put("sub", userDetails.getUsername());
         claims.put("created", new Date());
         return generateToken(claims);
@@ -74,13 +73,12 @@ public class JwtUtil {
      */
     public Claims parseToken(String token) {
         try {
-            Claims claims = Jwts.parser()
+            return Jwts.parser()
                     .setSigningKey(secret)
                     .parseClaimsJws(token)
                     .getBody();
-            return claims;
         } catch (Exception ex) {
-            LOGGER.info("jwt error:{}", token);
+            log.info("jwt error:{}", token);
             return null;
         }
     }
@@ -88,9 +86,9 @@ public class JwtUtil {
     /**
      * 验证jwt是否合法
      *
-     * @param token
-     * @param userDetails
-     * @return
+     * @param token       token口令
+     * @param userDetails 用户详情
+     * @return true/false
      */
     public Boolean validateToken(String token, UserDetails userDetails) {
         String username = getUsernameFromToken(token);
@@ -100,6 +98,7 @@ public class JwtUtil {
     /**
      * token是否过期
      *
+     * @param  token token口令
      * @return true：过期
      */
     public boolean isTokenExpired(String token) {
@@ -110,7 +109,7 @@ public class JwtUtil {
     /**
      * token续期
      *
-     * @return
+     * @return 生成过期日期
      */
     private Date generateExpirationDate() {
         return new Date(System.currentTimeMillis() + expiration * 1000);
@@ -119,8 +118,8 @@ public class JwtUtil {
     /**
      * 从Token中获取用户名
      *
-     * @param token
-     * @return
+     * @param token token口令
+     * @return 用户名
      */
     public String getUsernameFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);

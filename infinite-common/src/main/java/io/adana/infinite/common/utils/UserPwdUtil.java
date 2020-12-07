@@ -5,6 +5,8 @@ import io.adana.infinite.common.encrypted.Md5Util;
 
 /**
  * the util class about user's password
+ *
+ * @author admin
  */
 public class UserPwdUtil {
     private static final String CHECK_PASSWORD_LEGAL = "^[a-zA-Z0-9!@#$%^&*-_.,+?]{6,18}$";
