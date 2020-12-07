@@ -1,4 +1,4 @@
-package io.adana.infinite.admin.web.config;
+package io.adana.infinite.admin.config;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.*;

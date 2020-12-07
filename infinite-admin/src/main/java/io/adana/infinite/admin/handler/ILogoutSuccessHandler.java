@@ -1,4 +1,4 @@
-package io.adana.infinite.admin.web.handler;
+package io.adana.infinite.admin.handler;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;

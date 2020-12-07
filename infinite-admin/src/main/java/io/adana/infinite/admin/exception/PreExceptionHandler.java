@@ -1,4 +1,4 @@
-package io.adana.infinite.admin.web.exception;
+package io.adana.infinite.admin.exception;
 
 import io.adana.infinite.common.exception.BaseResp;
 import io.adana.infinite.common.exception.PreException;

@@ -1,4 +1,4 @@
-package io.adana.infinite.admin.web.utils;
+package io.adana.infinite.admin.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

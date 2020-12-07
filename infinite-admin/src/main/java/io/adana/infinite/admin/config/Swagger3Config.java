@@ -1,4 +1,4 @@
-package io.adana.infinite.admin.web.config;
+package io.adana.infinite.admin.config;
 
 import io.adana.infinite.common.constants.HeaderConstants;
 import io.swagger.annotations.ApiOperation;

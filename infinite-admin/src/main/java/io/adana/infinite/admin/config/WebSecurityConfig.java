@@ -1,6 +1,6 @@
-package io.adana.infinite.admin.web.config;
+package io.adana.infinite.admin.config;
 
-import io.adana.infinite.admin.web.handler.ILogoutSuccessHandler;
+import io.adana.infinite.admin.handler.ILogoutSuccessHandler;
 import io.adana.infinite.auth.service.UserAuthenticationProvider;
 import io.adana.infinite.user.api.IUserDetailApi;
 import org.springframework.beans.factory.annotation.Autowired;
