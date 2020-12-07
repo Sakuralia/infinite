@@ -1,7 +1,7 @@
 package io.adana.infinite.user.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import io.adana.infinite.user.domain.Department;
+import io.adana.infinite.user.domain.po.Department;
 
 /**
  * @author admin

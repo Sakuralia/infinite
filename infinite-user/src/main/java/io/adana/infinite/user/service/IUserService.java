@@ -1,7 +1,7 @@
 package io.adana.infinite.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import io.adana.infinite.user.domain.UserEntity;
+import io.adana.infinite.user.domain.po.SysUser;
 
 /**
  * @author admin
@@ -9,5 +9,5 @@ import io.adana.infinite.user.domain.UserEntity;
  * @description
  * @date 2020/10/21 18:59
  */
-public interface IUserService extends IService<UserEntity> {
+public interface IUserService extends IService<SysUser> {
 }

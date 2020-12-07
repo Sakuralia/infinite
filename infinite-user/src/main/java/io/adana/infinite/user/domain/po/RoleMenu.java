@@ -1,4 +1,4 @@
-package io.adana.infinite.user.domain;
+package io.adana.infinite.user.domain.po;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -8,22 +8,20 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 
 /**
- * function description:
- * <pre>
- *      the entity of the relation of which role and dept.
- *  </pre>
- *
  * @author sakura
- * @date 2020/10/21 10:52
+ * @date 2020/8/6 18:33
+ * @description
  */
-@Data
+@TableName("t_role_menu")
 @Accessors(chain = true)
-@TableName("t_role_dept")
-public class RoleDept implements Serializable {
+@Data
+public class RoleMenu implements Serializable {
 
     private Long id;
+
     @TableField("f_role_id")
     private Long roleId;
-    @TableField("f_dept_id")
-    private Long deptId;
+
+    @TableField("f_menu_id")
+    private Long menuId;
 }

@@ -1,5 +1,12 @@
 # Getting Started
+### TODO
+*[ ] 1.service's name which about sys-user that is developed firstly
+    -- token,findUserInfo,etc
+*[ ] 2.gateway interface
 
+*[ ] 3.security framework 
+
+*[ ] 4.dubbo-cloud framework and call some service methods
 ### Reference Documentation
 For further reference, please consider the following sections:
 
@@ -25,8 +32,6 @@ For further reference, please consider the following sections:
 * [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.2.9.RELEASE/maven-plugin/)
 * [Spring Configuration Processor](https://docs.spring.io/spring-boot/docs/2.3.2.RELEASE/reference/htmlsingle/#configuration-metadata-annotation-processor)
 * [Sentinel](https://spring-cloud-alibaba-group.github.io/github-pages/hoxton/en-us/index.html#_spring_cloud_alibaba_sentinel)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.3.2.RELEASE/reference/htmlsingle/#boot-features-jpa-and-spring-data)
-* [Thymeleaf](https://docs.spring.io/spring-boot/docs/2.3.2.RELEASE/reference/htmlsingle/#boot-features-spring-mvc-template-engines)
 * [Spring Security](https://docs.spring.io/spring-boot/docs/2.3.2.RELEASE/reference/htmlsingle/#boot-features-security)
 * [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/2.3.2.RELEASE/reference/htmlsingle/#production-ready)
 * [Spring Web](https://docs.spring.io/spring-boot/docs/2.3.2.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)

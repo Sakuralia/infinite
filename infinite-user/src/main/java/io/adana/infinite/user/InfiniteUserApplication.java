@@ -13,8 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2020/10/30 16:49
  */
 @SpringBootApplication
-public class UserApplication {
+public class InfiniteUserApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class, args);
+        SpringApplication.run(InfiniteUserApplication.class, args);
     }
 }

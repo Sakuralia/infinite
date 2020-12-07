@@ -1,4 +1,4 @@
-package io.adana.infinite.user.domain;
+package io.adana.infinite.user.domain.po;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -8,25 +8,22 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 
 /**
- * @author sakura
- * @date 2020/8/6 18:16
+ * @author simon
+ * @date 2020/8/6 18:10
  * @description <pre>
- *     the entity of the relation which is user and permission.
+ *     the entity of the relation which is user and role.
  * </pre>
  */
 @Data
 @Accessors(chain = true)
-@TableName("t_user_permission")
-public class UserPermission implements Serializable {
+@TableName("t_user_role")
+public class UserRole implements Serializable {
 
     private Long id;
 
     @TableField("f_user_id")
     private Long userId;
 
-    @TableField("f_permission_id")
-    private Long permsId;
-
-    @TableField("f_type")
-    private Integer type;
+    @TableField("f_role_id")
+    private Long roleId;
 }
