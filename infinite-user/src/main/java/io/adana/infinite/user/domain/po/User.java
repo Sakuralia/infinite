@@ -28,7 +28,7 @@ import java.util.List;
 @Accessors(chain = true)
 @TableName("t_user")
 @ApiModel(description = "用户记录表")
-public class SysUser extends BaseEntity<SysUser> {
+public class User extends BaseEntity<User> {
 
     @TableId
     private Long id;
@@ -54,11 +54,6 @@ public class SysUser extends BaseEntity<SysUser> {
     @TableField("password")
     @NotBlank(message = "密码不能为空")
     private String password;
-    /**
-     * salt
-     */
-    @TableField("salt")
-    private String salt;
     /**
      * gender: 0 -----> male
      * 1 -----> female

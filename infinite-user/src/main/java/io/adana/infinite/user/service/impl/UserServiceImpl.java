@@ -2,7 +2,7 @@ package io.adana.infinite.user.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.adana.infinite.user.dao.IUserMapper;
-import io.adana.infinite.user.domain.po.SysUser;
+import io.adana.infinite.user.domain.po.User;
 import io.adana.infinite.user.service.IUserService;
 import org.apache.dubbo.config.annotation.Service;
 
@@ -15,6 +15,6 @@ import org.apache.dubbo.config.annotation.Service;
  * @date 2020/10/21 19:01
  */
 @Service(version = "1.0.0", group = "user")
-public class UserServiceImpl extends ServiceImpl<IUserMapper, SysUser> implements IUserService {
+public class UserServiceImpl extends ServiceImpl<IUserMapper, User> implements IUserService {
 
 }
