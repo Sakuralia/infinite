@@ -14,7 +14,7 @@
         <module>infinite-common</module>
         <module>infinite-admin</module>
         <module>infinite-auth</module>
-        <module>infinte-gateway</module>
+        <module>infinite-gateway</module>
     </modules>
 
     <properties>
@@ -26,6 +26,7 @@
         <mybatis-plus.version>3.3.2</mybatis-plus.version>
         <jjwt.version>0.9.0</jjwt.version>
         <hibernate-validator.version>6.1.0.Final</hibernate-validator.version>
+        <validate.api.version>2.0.1.Final</validate.api.version>
         <joda.time.version>2.9.9</joda.time.version>
         <mysql.version>8.0.16</mysql.version>
         <swagger.version>3.0.0</swagger.version>
@@ -85,6 +86,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -132,23 +139,20 @@
     <build>
         <finalName>${project.name}</finalName>
         <plugins>
-            <!-- 打包时跳过测试 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.8.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

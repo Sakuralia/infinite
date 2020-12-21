@@ -1,6 +1,5 @@
-package io.adana.infinite.admin.filters;
+package io.adana.infinite.common.filters;
 
-import io.adana.infinite.common.filters.XssHttpServletRequestWrapper;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;

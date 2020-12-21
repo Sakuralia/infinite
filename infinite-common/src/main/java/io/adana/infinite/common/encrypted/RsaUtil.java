@@ -1,5 +1,7 @@
 package io.adana.infinite.common.encrypted;
 
+import io.adana.infinite.common.domain.constants.CommonConstant;
+
 import javax.crypto.Cipher;
 import java.security.*;
 import java.security.interfaces.RSAPrivateKey;
@@ -17,12 +19,6 @@ import java.util.Map;
  * @Description encode by algorithm RSA
  */
 public class RsaUtil {
-    public static final String KEY_ALGORITHM = "RSA";
-    public static final String SIGNATURE_ALGORITHM = "MD5withRSA";
-
-    private static final String PUBLIC_KEY = "RSAPublickey";
-    private static final String PRIVATE_KEY = "RSAPrivateKey";
-
     /**
      * generate a digital signature using the private key.
      *
@@ -38,10 +34,9 @@ public class RsaUtil {
     public static String getSignature(byte[] data, String privateKey) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(privateKey);
         PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(bytes);
-
-        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
+        KeyFactory keyFactory = KeyFactory.getInstance(CommonConstant.KEY_ALGORITHM);
         PrivateKey privateKey1 = keyFactory.generatePrivate(pkcs8EncodedKeySpec);
-        Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
+        Signature signature = Signature.getInstance(CommonConstant.SIGNATURE_ALGORITHM);
         signature.initSign(privateKey1);
         signature.update(data);
 
@@ -63,9 +58,9 @@ public class RsaUtil {
     public static boolean checkSignature(byte[] data, String publicKey, String sign) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(publicKey);
         X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(bytes);
-        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
+        KeyFactory keyFactory = KeyFactory.getInstance(CommonConstant.KEY_ALGORITHM);
         PublicKey publicKey1 = keyFactory.generatePublic(x509EncodedKeySpec);
-        Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
+        Signature signature = Signature.getInstance(CommonConstant.SIGNATURE_ALGORITHM);
         signature.initVerify(publicKey1);
         signature.update(data);
         return signature.verify(Base64.getDecoder().decode(sign));
@@ -82,7 +77,7 @@ public class RsaUtil {
     public static byte[] decodeByPrivateKey(byte[] data, String key) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(key);
         PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(bytes);
-        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
+        KeyFactory keyFactory = KeyFactory.getInstance(CommonConstant.KEY_ALGORITHM);
         Key privateKey = keyFactory.generatePrivate(pkcs8EncodedKeySpec);
         Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
         cipher.init(Cipher.DECRYPT_MODE, privateKey);
@@ -101,7 +96,7 @@ public class RsaUtil {
     public static byte[] decodeByPublicKey(byte[] data, String key) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(key);
         X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(bytes);
-        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
+        KeyFactory keyFactory = KeyFactory.getInstance(CommonConstant.KEY_ALGORITHM);
         Key publicKey = keyFactory.generatePublic(x509EncodedKeySpec);
         Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
         cipher.init(Cipher.DECRYPT_MODE, publicKey);
@@ -120,7 +115,7 @@ public class RsaUtil {
     public static byte[] encodeByPrivateKey(byte[] data, String key) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(key);
         PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(bytes);
-        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
+        KeyFactory keyFactory = KeyFactory.getInstance(CommonConstant.KEY_ALGORITHM);
         Key privateKey = keyFactory.generatePrivate(pkcs8EncodedKeySpec);
 
         Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
@@ -140,7 +135,7 @@ public class RsaUtil {
     public static byte[] encodeByPublicKey(byte[] data, String key) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(key);
         X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(bytes);
-        KeyFactory keyFactory = KeyFactory.getInstance(KEY_ALGORITHM);
+        KeyFactory keyFactory = KeyFactory.getInstance(CommonConstant.KEY_ALGORITHM);
         Key publicKey = keyFactory.generatePublic(x509EncodedKeySpec);
         Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
         cipher.init(Cipher.ENCRYPT_MODE, publicKey);
@@ -149,25 +144,25 @@ public class RsaUtil {
     }
 
     public static String getPrivateKey(Map<String, Object> mapKey) {
-        Key key = (Key) mapKey.get(PRIVATE_KEY);
+        Key key = (Key) mapKey.get(CommonConstant.PRIVATE_KEY);
         return Base64.getEncoder().encodeToString(key.getEncoded());
     }
 
     public static String getPulicKey(Map<String, Object> mapKey) {
-        Key key = (Key) mapKey.get(PUBLIC_KEY);
+        Key key = (Key) mapKey.get(CommonConstant.PUBLIC_KEY);
         return Base64.getEncoder().encodeToString(key.getEncoded());
     }
 
     public static Map<String, Object> initKey() throws Exception {
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(KEY_ALGORITHM);
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(CommonConstant.KEY_ALGORITHM);
         keyPairGenerator.initialize(1024);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
 
         RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
         RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
-        Map<String, Object> mapKey = new HashMap<>();
-        mapKey.put(PUBLIC_KEY, publicKey);
-        mapKey.put(PRIVATE_KEY, privateKey);
+        Map<String, Object> mapKey = new HashMap<>(4);
+        mapKey.put(CommonConstant.PUBLIC_KEY, publicKey);
+        mapKey.put(CommonConstant.PRIVATE_KEY, privateKey);
         return mapKey;
     }
 }

@@ -1,6 +1,6 @@
 package io.adana.infinite.admin.config;
 
-import io.adana.infinite.common.constants.HeaderConstants;
+import io.adana.infinite.common.domain.constants.HeaderConstant;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +28,7 @@ import java.util.List;
 @Configuration
 @EnableOpenApi
 public class Swagger3Config {
+
     /**
      * @return Docket
      * @description <p>
@@ -66,7 +67,7 @@ public class Swagger3Config {
     private List<SecurityScheme> securitySchemes() {
         //configure the information of request header.
         List<SecurityScheme> schemes = new ArrayList<>();
-        ApiKey apiKey = new ApiKey(HeaderConstants.REQ_HEAD_CONS, "token", "header");
+        ApiKey apiKey = new ApiKey(HeaderConstant.REQ_HEAD_CONS, "token", "header");
         schemes.add(apiKey);
         return schemes;
     }

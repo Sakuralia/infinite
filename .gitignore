@@ -30,3 +30,4 @@ build/
 ### VS Code ###
 .vscode/
 /infinte-gateway/.mvn/
+/infinite-common/target/

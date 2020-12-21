@@ -3,7 +3,7 @@ package io.adana.infinite.user.domain.po;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.adana.infinite.common.domain.BaseEntity;
+import io.adana.infinite.common.domain.po.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;

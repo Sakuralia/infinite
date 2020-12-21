@@ -2,7 +2,7 @@ package io.adana.infinite.user.domain.po;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.adana.infinite.common.domain.BaseEntity;
+import io.adana.infinite.common.domain.po.BaseEntity;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
