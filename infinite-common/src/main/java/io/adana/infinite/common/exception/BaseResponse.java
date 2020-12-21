@@ -12,7 +12,7 @@ import java.io.Serializable;
  * </p>
  */
 @JsonPropertyOrder({"code", "msg", "data"})
-public class BaseResp<T> implements Serializable {
+public class BaseResponse<T> implements Serializable {
 
     @ApiModelProperty(value = "返回代码")
     private int code;
@@ -21,10 +21,10 @@ public class BaseResp<T> implements Serializable {
     @ApiModelProperty(value = "返回数据内容")
     private T data;
 
-    public BaseResp() {
+    public BaseResponse() {
     }
 
-    public BaseResp(int code, String msg, T data) {
+    public BaseResponse(int code, String msg, T data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
@@ -59,8 +59,8 @@ public class BaseResp<T> implements Serializable {
      *
      * @return Base_Response
      */
-    public static BaseResp<Object> ok() {
-        return new BaseResp<>(ResultCode.RESULT_OK.getCode(), ResultCode.RESULT_OK.getMsg(), "");
+    public static BaseResponse<Object> ok() {
+        return new BaseResponse<>(ResultCode.RESULT_OK.getCode(), ResultCode.RESULT_OK.getMsg(), "");
     }
 
     /**
@@ -69,8 +69,8 @@ public class BaseResp<T> implements Serializable {
      * @param data data
      * @return Base_Response
      */
-    public static <T> BaseResp<T> ok(T data) {
-        return new BaseResp<>(ResultCode.RESULT_OK.getCode(), ResultCode.RESULT_OK.getMsg(), data);
+    public static <T> BaseResponse<T> ok(T data) {
+        return new BaseResponse<>(ResultCode.RESULT_OK.getCode(), ResultCode.RESULT_OK.getMsg(), data);
     }
 
     /**
@@ -79,8 +79,8 @@ public class BaseResp<T> implements Serializable {
      * @param result the enum Object
      * @return Base_Response
      */
-    public static BaseResp<Object> error(ResultCode result) {
-        return new BaseResp<>(result.getCode(), result.getMsg(), "");
+    public static BaseResponse<Object> error(ResultCode result) {
+        return new BaseResponse<>(result.getCode(), result.getMsg(), "");
     }
 
     /**
@@ -90,7 +90,7 @@ public class BaseResp<T> implements Serializable {
      * @param data   data
      * @return Base_Response
      */
-    public static <T> BaseResp<T> error(ResultCode result, T data) {
-        return new BaseResp<>(result.getCode(), result.getMsg(), data);
+    public static <T> BaseResponse<T> error(ResultCode result, T data) {
+        return new BaseResponse<>(result.getCode(), result.getMsg(), data);
     }
 }

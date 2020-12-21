@@ -24,7 +24,7 @@ public class RsaUtil {
      *
      * @param data       encrypted data .
      * @param privateKey private key
-     * @return
+     * @return {@link String}
      * @throws Exception 1. decode by private key with encoded in base64;
      *                   2. construct a object that named PKCS8EncodedKeySpec;
      *                   3. give a algorithm to KEY_Algorithm;
@@ -49,13 +49,13 @@ public class RsaUtil {
      * @param data      data
      * @param publicKey public key
      * @param sign      signature
-     * @return
+     * @return {@link Boolean}
      * @throws Exception 1.decode by public key that encode in base64;
      *                   2.construct a object which named X509EncodedKeySpec;
      *                   3. get the object of public key;
      *                   4. check the signature which is normal or not.
      */
-    public static boolean checkSignature(byte[] data, String publicKey, String sign) throws Exception {
+    public static Boolean checkSignature(byte[] data, String publicKey, String sign) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(publicKey);
         X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(bytes);
         KeyFactory keyFactory = KeyFactory.getInstance(CommonConstant.KEY_ALGORITHM);
@@ -71,8 +71,8 @@ public class RsaUtil {
      *
      * @param data encrypted data
      * @param key  key
-     * @return
-     * @throws Exception
+     * @return {@link Byte[]}
+     * @throws Exception {@link NoSuchAlgorithmException}
      */
     public static byte[] decodeByPrivateKey(byte[] data, String key) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(key);
@@ -90,8 +90,8 @@ public class RsaUtil {
      *
      * @param data encrypted data
      * @param key  key
-     * @return
-     * @throws Exception
+     * @return {@link Byte[]}
+     * @throws Exception {@link NoSuchAlgorithmException}
      */
     public static byte[] decodeByPublicKey(byte[] data, String key) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(key);
@@ -109,8 +109,8 @@ public class RsaUtil {
      *
      * @param data primary data
      * @param key  private key
-     * @return
-     * @throws Exception
+     * @return {@link Byte[]}
+     * @throws Exception{@link NoSuchAlgorithmException}
      */
     public static byte[] encodeByPrivateKey(byte[] data, String key) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(key);
@@ -130,7 +130,7 @@ public class RsaUtil {
      * @param data primary data
      * @param key  public key
      * @return byte[]
-     * @throws Exception
+     * @throws Exception {@link NoSuchAlgorithmException}
      */
     public static byte[] encodeByPublicKey(byte[] data, String key) throws Exception {
         byte[] bytes = Base64.getDecoder().decode(key);
@@ -143,16 +143,34 @@ public class RsaUtil {
         return cipher.doFinal(data);
     }
 
+    /**
+     * get the private secret-key
+     *
+     * @param mapKey key-value map
+     * @return {@link String}
+     */
     public static String getPrivateKey(Map<String, Object> mapKey) {
         Key key = (Key) mapKey.get(CommonConstant.PRIVATE_KEY);
         return Base64.getEncoder().encodeToString(key.getEncoded());
     }
 
+    /**
+     * get the public secret-key
+     *
+     * @param mapKey key-value map
+     * @return {@link String}
+     */
     public static String getPulicKey(Map<String, Object> mapKey) {
         Key key = (Key) mapKey.get(CommonConstant.PUBLIC_KEY);
         return Base64.getEncoder().encodeToString(key.getEncoded());
     }
 
+    /**
+     * init the secret-key
+     *
+     * @return {@link Map<String, Object>}
+     * @throws Exception {@link NoSuchAlgorithmException}
+     */
     public static Map<String, Object> initKey() throws Exception {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(CommonConstant.KEY_ALGORITHM);
         keyPairGenerator.initialize(1024);
