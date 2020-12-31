@@ -14,7 +14,7 @@ public enum ResultCode {
     RESULT_OK(9999, "success"),
     RESULT_EXIST(1111, "the recode exists"),
     //============== service ===============
-    SERVICE_ERROR(5555, "the service errors"),
+    SERVER_ERROR(5555, "the service errors"),
     //============== user ==================
     LOGIN_PARAMS_ERROR(8881, "params errors in which login.For detail,look the api doc"),
     LOGIN_ERROR(8885, "the sign-on service errors"),

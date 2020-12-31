@@ -1,13 +1,18 @@
-package io.adana.infinite.admin.config;
+package io.adana.infinite.auth.config;
 
 import io.adana.infinite.admin.handler.ILogoutSuccessHandler;
+import io.adana.infinite.auth.exception.JwtAuthenticationEntryPoint;
+import io.adana.infinite.auth.filter.JwtAuthorizationFilter;
+import io.adana.infinite.auth.handler.JwtAccessDeniedHandler;
 import io.adana.infinite.auth.service.UserAuthenticationProvider;
 import io.adana.infinite.user.api.IUserDetailApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,7 +33,7 @@ import javax.annotation.Resource;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
+    @Resource
     private ILogoutSuccessHandler iLogoutSuccessHandler;
 
     @Resource
@@ -36,6 +41,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Resource
     private IUserDetailApi iUserDetailApi;
+
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
     /**
      * configure the permission controller of urls.
@@ -87,6 +95,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .frameOptions()
                 .disable()
                 .and();
+        http.cors(Customizer.withDefaults())
+                // close csrf
+                .csrf().disable()
+                // add filter related about jwt
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), stringRedisTemplate))
+                .exceptionHandling().authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+                .accessDeniedHandler(new JwtAccessDeniedHandler());
         //disabled cache.
         http.headers().cacheControl();
     }
