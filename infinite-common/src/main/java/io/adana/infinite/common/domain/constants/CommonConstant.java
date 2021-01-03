@@ -25,4 +25,14 @@ public class CommonConstant {
      * private key
      */
     public static final String PRIVATE_KEY = "rsa_private_key";
+
+    /**
+     * token type --- jwt
+     */
+    public static final String TOKEN_TYPE = "JWT";
+
+    /**
+     * token type --- session(need to set value that is suited for distributed and microservice project)
+     */
+    public static final String TOKEN_TYPE_SESSION = "session";
 }

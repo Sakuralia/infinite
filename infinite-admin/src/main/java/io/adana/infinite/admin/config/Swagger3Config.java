@@ -1,5 +1,6 @@
 package io.adana.infinite.admin.config;
 
+import io.adana.infinite.common.domain.constants.CommonConstant;
 import io.adana.infinite.common.domain.constants.HeaderConstant;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +15,7 @@ import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -67,23 +69,16 @@ public class Swagger3Config {
     private List<SecurityScheme> securitySchemes() {
         //configure the information of request header.
         List<SecurityScheme> schemes = new ArrayList<>();
-        ApiKey apiKey = new ApiKey(HeaderConstant.REQ_HEAD_CONS, "token", "header");
+        ApiKey apiKey = new ApiKey(CommonConstant.TOKEN_TYPE, HeaderConstant.TOKEN_HEADER, "header");
         schemes.add(apiKey);
         return schemes;
     }
 
     private List<SecurityContext> securityContexts() {
-        List<SecurityContext> contexts = new ArrayList<>();
-        // add some paths to authenticate
-        contexts.add(getContextPath("^(?!auth).*$"));
-        return contexts;
-    }
-
-    private SecurityContext getContextPath(String pathRegex) {
-        return SecurityContext.builder()
+        SecurityContext context = SecurityContext.builder()
                 .securityReferences(getDefaultAuth())
-                .forPaths(PathSelectors.regex(pathRegex))
                 .build();
+        return Collections.singletonList(context);
     }
 
     private List<SecurityReference> getDefaultAuth() {
@@ -91,7 +86,7 @@ public class Swagger3Config {
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
-        result.add(new SecurityReference("Authorization", authorizationScopes));
+        result.add(new SecurityReference("JWT", authorizationScopes));
         return result;
     }
 }

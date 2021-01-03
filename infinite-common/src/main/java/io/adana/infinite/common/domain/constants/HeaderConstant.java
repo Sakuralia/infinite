@@ -9,4 +9,10 @@ package io.adana.infinite.common.domain.constants;
 public class HeaderConstant {
 
     public static final String REQ_HEAD_CONS = "token";
+
+    public static final String TOKEN_HEADER = "inf-x-Auth";
+
+    public static final String TOKEN_PREFIX = "INF";
+
+
 }
