@@ -19,20 +19,23 @@ public class CommonConstant {
     /**
      * public key
      */
-    public static final String PUBLIC_KEY = "rsa_public_key";
+    public static final String PUBLIC_KEY = "RSA_PUBLIC_KEY";
 
     /**
      * private key
      */
-    public static final String PRIVATE_KEY = "rsa_private_key";
+    public static final String PRIVATE_KEY = "RSA_PRIVATE_KEY";
 
     /**
      * token type --- jwt
      */
-    public static final String TOKEN_TYPE = "JWT";
+    public static final String TOKEN_TYPE = "JWT_";
 
     /**
      * token type --- session(need to set value that is suited for distributed and microservice project)
      */
-    public static final String TOKEN_TYPE_SESSION = "session";
+    public static final String TOKEN_TYPE_SESSION = "SESSION_";
+
+
+    public static final String COMMON_ACCESS_FORBIDDEN = "COMMON_ACCESS_FORBIDDEN";
 }
