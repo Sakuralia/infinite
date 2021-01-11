@@ -7,20 +7,20 @@ package io.adana.infinite.common.exception;
  */
 public enum ResultCode {
     //============== system ===============
-    REQUEST_PARAM_ERROR(400, "parameters error"),
-    RESOURCE_FORBIDDEN(403, "access denied "),
-    RESULT_NOT_FOUND(404, "not found"),
-    RESULT_ERROR(500, "error"),
-    RESULT_OK(999, "success"),
-    RESULT_EXIST(111, "the recode exists"),
+    REQUEST_PARAM_ERROR(4000, "parameters error"),
+    RESOURCE_FORBIDDEN(4003, "access denied "),
+    RESULT_NOT_FOUND(4004, "not found"),
+    RESULT_ERROR(5000, "error"),
+    RESULT_OK(9999, "success"),
+    RESULT_EXIST(1111, "the recode exists"),
     //============== service ===============
-    SERVICE_ERROR(555, "the service errors"),
+    SERVER_ERROR(5555, "the service errors"),
     //============== user ==================
-    LOGIN_PARAMS_ERROR(881, "params errors in which login.For detail,look the api doc"),
-    LOGIN_ERROR(885, "the sign-on service errors"),
-    LOGIN_CAPTCHA(884, "the verification code errors"),
-    USER_NOT_FOUND(886, "the user is not existed"),
-    USER_LOCKED(887, "the account is locked"),
+    LOGIN_PARAMS_ERROR(8881, "params errors in which login.For detail,look the api doc"),
+    LOGIN_ERROR(8885, "the sign-on service errors"),
+    LOGIN_CAPTCHA(8884, "the verification code errors"),
+    USER_NOT_FOUND(8886, "the user is not existed"),
+    USER_LOCKED(8887, "the account is locked"),
     ;
     private final int code;
     private final String msg;

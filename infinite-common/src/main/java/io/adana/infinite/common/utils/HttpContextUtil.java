@@ -6,6 +6,11 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Objects;
 
+/**
+ * @author sakura
+ * @date 2020-12-07 18:58
+ * @description 获取request相关内容
+ */
 public class HttpContextUtil {
     public static HttpServletRequest getHttpServletRequest() {
         return ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes())).getRequest();

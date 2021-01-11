@@ -7,7 +7,9 @@ import org.springframework.aop.support.AopUtils;
 import java.lang.reflect.Field;
 
 /**
- * Description: 能获取JDK动态代理/CGLIB代理对象代理的目标对象。
+ * @author admin
+ * @description: 能获取JDK动态代理/CGLIB代理对象代理的目标对象。
+ * @date 2020-12-07 18:57
  */
 public class AopTargetUtils {
     /**
@@ -20,7 +22,7 @@ public class AopTargetUtils {
     public static Object getTarget(Object proxy) {
 
         if (!AopUtils.isAopProxy(proxy)) {
-            return proxy;// 不是代理对象
+            return proxy;
         }
         try {
             if (AopUtils.isJdkDynamicProxy(proxy)) {
@@ -47,9 +49,7 @@ public class AopTargetUtils {
         Field advised = dynamicAdvisedInterceptor.getClass().getDeclaredField("advised");
         advised.setAccessible(true);
 
-        Object target = ((AdvisedSupport) advised.get(dynamicAdvisedInterceptor)).getTargetSource().getTarget();
-
-        return target;
+        return ((AdvisedSupport) advised.get(dynamicAdvisedInterceptor)).getTargetSource().getTarget();
     }
 
     private static Object getJdkDynamicProxyTargetObject(Object proxy) throws Exception {

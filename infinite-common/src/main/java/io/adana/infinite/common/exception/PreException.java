@@ -6,8 +6,8 @@ package io.adana.infinite.common.exception;
  * @description
  */
 public class PreException extends RuntimeException {
-    private String msg;
-    private int code = 5;
+    private String msg = "server errors,try again please";
+    private int code = 5000;
 
     public PreException(String msg) {
         super(msg);

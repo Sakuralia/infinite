@@ -1,5 +1,7 @@
 package io.adana.infinite.common.encrypted;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import java.nio.charset.StandardCharsets;
@@ -15,6 +17,7 @@ import java.util.Objects;
  * @date 2019/2/27
  * @description encode by DES and base64
  */
+@Slf4j
 public class DesUtil {
 
     public static String encodeByBase64(byte[] target) {
@@ -27,7 +30,7 @@ public class DesUtil {
         try {
             return decode64.decode(target);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("*********It occured a exception which is {}*********", e.getCause());
         }
         return null;
     }
@@ -38,7 +41,7 @@ public class DesUtil {
             generator.init(new SecureRandom(key.getBytes()));
             return generator.generateKey();
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            log.error("*********It occured a exception which is {}*********", e.getCause());
         }
         return null;
     }
@@ -48,9 +51,10 @@ public class DesUtil {
             byte[] targets = target.getBytes(StandardCharsets.UTF_8);
             Cipher cipher = Cipher.getInstance(algorithm);
             cipher.init(Cipher.ENCRYPT_MODE, getKey(key, algorithm));
+            log.error("*********Des encrypted successfully*********");
             return encodeByBase64(cipher.doFinal(targets));
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("*********a exception occured *********", e);
         }
         return null;
     }
@@ -61,9 +65,10 @@ public class DesUtil {
             Cipher cipher = Cipher.getInstance(algorithm);
             cipher.init(Cipher.DECRYPT_MODE, getKey(key, algorithm));
             byte[] bytes = cipher.doFinal(Objects.requireNonNull(targets));
+            log.error("*********Des decrypted successfully*********");
             return new String(bytes, StandardCharsets.UTF_8);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("*********It occured a exception which is {}*********", e.getCause());
         }
         return null;
     }

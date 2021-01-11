@@ -11,7 +11,9 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * java与json之间的转换工具类
+ * @author sakura
+ * @description java与json之间的转换工具类
+ * @date 2020-12-07 19:00
  */
 public class JacksonUtil {
     private static final Logger logger = LoggerFactory.getLogger(JacksonUtil.class);
