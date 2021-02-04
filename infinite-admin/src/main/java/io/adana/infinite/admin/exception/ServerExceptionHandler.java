@@ -1,8 +1,8 @@
 package io.adana.infinite.admin.exception;
 
-import io.adana.infinite.common.exception.BaseResponse;
-import io.adana.infinite.common.exception.PreException;
-import io.adana.infinite.common.exception.ResultCode;
+import io.adana.infinite.common.web.domain.enums.ResultCode;
+import io.adana.infinite.common.web.exception.BaseResponse;
+import io.adana.infinite.common.web.exception.ServerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -16,17 +16,17 @@ import org.yaml.snakeyaml.constructor.DuplicateKeyException;
  * @description the function of intercepted Exception within the back-end
  */
 @RestControllerAdvice
-public class PreExceptionHandler {
+public class ServerExceptionHandler {
     private Logger log = LoggerFactory.getLogger(this.getClass());
 
     /**
      * the function which display in back-end.
      *
-     * @param ex {@link PreException}
+     * @param ex {@link ServerException}
      * @return {@link BaseResponse}
      */
-    @ExceptionHandler(PreException.class)
-    public BaseResponse handlePreException(PreException ex) {
+    @ExceptionHandler(ServerException.class)
+    public BaseResponse handlePreException(ServerException ex) {
         BaseResponse resp = new BaseResponse();
         resp.setCode(ex.getCode());
         resp.setMsg(ex.getMsg());

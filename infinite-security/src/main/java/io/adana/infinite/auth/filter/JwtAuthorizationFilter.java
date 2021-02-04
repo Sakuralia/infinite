@@ -1,6 +1,6 @@
 package io.adana.infinite.auth.filter;
 
-import io.adana.infinite.common.domain.constants.HeaderConstant;
+import io.adana.infinite.common.web.domain.consts.HeaderConstant;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;

@@ -1,4 +1,4 @@
-package io.adana.infinite.common.web.domain.constants;
+package io.adana.infinite.common.web.domain.consts;
 
 /**
  * @author admin

@@ -2,7 +2,7 @@ package io.adana.infinite.auth.handler;
 
 import com.alibaba.fastjson.JSON;
 import io.adana.infinite.auth.exception.ValidateException;
-import io.adana.infinite.common.exception.ResultCode;
+import io.adana.infinite.common.web.domain.enums.ResultCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;

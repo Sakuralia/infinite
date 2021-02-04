@@ -1,6 +1,6 @@
 package io.adana.infinite.common.web.encrypted;
 
-import io.adana.infinite.common.web.domain.constants.CommonConstant;
+import io.adana.infinite.common.web.domain.consts.CommonConstant;
 
 import javax.crypto.Cipher;
 import java.security.*;

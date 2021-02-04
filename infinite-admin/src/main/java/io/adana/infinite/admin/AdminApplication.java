@@ -1,6 +1,6 @@
 package io.adana.infinite.admin;
 
-import io.adana.infinite.common.annotation.InfiniteCommonsEnableConfigs;
+import io.adana.infinite.common.web.annotation.InfiniteCommonsEnableConfigs;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;

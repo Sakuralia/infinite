@@ -1,7 +1,7 @@
 package io.adana.infinite.admin.config;
 
-import io.adana.infinite.common.domain.constants.CommonConstant;
-import io.adana.infinite.common.domain.constants.HeaderConstant;
+import io.adana.infinite.common.web.domain.consts.CommonConstant;
+import io.adana.infinite.common.web.domain.consts.HeaderConstant;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

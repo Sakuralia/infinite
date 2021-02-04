@@ -1,6 +1,7 @@
 package io.adana.infinite.common.web.exception;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import io.adana.infinite.common.web.domain.enums.ResultCode;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;

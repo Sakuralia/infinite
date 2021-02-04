@@ -5,27 +5,27 @@ package io.adana.infinite.common.web.exception;
  * @date 2020/7/22 16:38
  * @description
  */
-public class PreException extends RuntimeException {
+public class ServerException extends RuntimeException {
     private String msg = "server errors,try again please";
     private int code = 5000;
 
-    public PreException(String msg) {
+    public ServerException(String msg) {
         super(msg);
         this.msg = msg;
     }
 
-    public PreException(String msg, Throwable e) {
+    public ServerException(String msg, Throwable e) {
         super(msg, e);
         this.msg = msg;
     }
 
-    public PreException(String msg, int code) {
+    public ServerException(String msg, int code) {
         super(msg);
         this.msg = msg;
         this.code = code;
     }
 
-    public PreException(String msg, int code, Throwable e) {
+    public ServerException(String msg, int code, Throwable e) {
         super(msg, e);
         this.msg = msg;
         this.code = code;

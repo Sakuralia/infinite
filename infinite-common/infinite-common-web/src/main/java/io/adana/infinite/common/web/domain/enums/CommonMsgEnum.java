@@ -1,7 +1,7 @@
 package io.adana.infinite.common.web.domain.enums;
 
 
-import io.adana.infinite.common.web.domain.constants.CommonConstant;
+import io.adana.infinite.common.web.domain.consts.CommonConstant;
 
 import java.util.Objects;
 

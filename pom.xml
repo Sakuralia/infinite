@@ -13,7 +13,7 @@
         <module>infinite-user</module>
         <module>infinite-common</module>
         <module>infinite-admin</module>
-        <module>infinite-auth</module>
+        <module>infinite-security</module>
         <module>infinite-gateway</module>
     </modules>
 

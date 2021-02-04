@@ -1,4 +1,4 @@
-package io.adana.infinite.common.web.domain.po;
+package io.adana.infinite.user.domain.po;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;

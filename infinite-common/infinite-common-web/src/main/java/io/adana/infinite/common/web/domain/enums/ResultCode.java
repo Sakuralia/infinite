@@ -1,4 +1,4 @@
-package io.adana.infinite.common.web.exception;
+package io.adana.infinite.common.web.domain.enums;
 
 /**
  * @author vega-yang
