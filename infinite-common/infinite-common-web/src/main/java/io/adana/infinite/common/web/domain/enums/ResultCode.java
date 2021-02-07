@@ -10,11 +10,11 @@ public enum ResultCode {
     REQUEST_PARAM_ERROR(4000, "parameters error"),
     RESOURCE_FORBIDDEN(4003, "access denied "),
     RESULT_NOT_FOUND(4004, "not found"),
-    RESULT_ERROR(5000, "error"),
-    RESULT_OK(9999, "success"),
-    RESULT_EXIST(1111, "the recode exists"),
+    RESULT_ERROR(5000, "service error"),
+    RESULT_OK(0, "success"),
+    RESULT_EXIST(9999, "the recode exists"),
     //============== service ===============
-    SERVER_ERROR(5555, "the service errors"),
+
     //============== user ==================
     LOGIN_PARAMS_ERROR(8881, "params errors in which login.For detail,look the api doc"),
     LOGIN_ERROR(8885, "the sign-on service errors"),

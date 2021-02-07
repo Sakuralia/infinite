@@ -16,9 +16,9 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * @author ywb
+ * @author sakura
  * @version 1.1
- * @date ${DATE} ${TIME}
+ * @date 2020-12-12 19:00
  * @description ElasticJobConfig
  * @Scope
  */
@@ -30,10 +30,12 @@ public class ElasticJobConfig implements InitializingBean {
 
     private ApplicationContext ctx;
 
+    @Autowired
     public ElasticJobConfig(ElasticJobProperties jobProperties, ApplicationContext ctx) {
         this.ctx = ctx;
         this.jobProperties = jobProperties;
     }
+
     @Bean
     public ZookeeperRegistryCenter zookeeperRegistryCenter() {
         ZookeeperConfiguration zkConfig = new ZookeeperConfiguration(jobProperties.getZkServerNode(), jobProperties.getZkServerNamespace());

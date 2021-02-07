@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * @author ywb
+ * @author sakura
  * @version 1.1
  * @date 2021-02-04 09:21
  * @description ElasticJobProperties

@@ -11,7 +11,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 import org.yaml.snakeyaml.constructor.DuplicateKeyException;
 
 /**
- * @author Lenovo
+ * @author sakura
  * @date 2020/7/22 16:33
  * @description the function of intercepted Exception within the back-end
  */

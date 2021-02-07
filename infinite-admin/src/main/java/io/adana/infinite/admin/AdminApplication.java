@@ -7,7 +7,8 @@ import org.springframework.cloud.client.SpringCloudApplication;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 
 /**
- * @author simonyang
+ * @description admin-management-website-api application
+ * @author sakura
  */
 @EnableOpenApi
 @EnableDubbo

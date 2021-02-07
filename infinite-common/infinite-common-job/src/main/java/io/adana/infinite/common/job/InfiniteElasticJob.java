@@ -7,7 +7,7 @@ import java.lang.annotation.*;
 /**
  * the annotation of schedule-job-distribute-system
  *
- * @author admin
+ * @author sakura
  * @date 2021-02-03 16:56
  */
 @Target({ElementType.TYPE})
