@@ -6,7 +6,6 @@ package io.adana.infinite.common.web.utils;
  * @version 1.1
  * @date 2021-02-09 10:30
  * @description FileSliceUtil
- * @Scope
  */
 public class FileSliceUtil {
 
@@ -16,6 +15,6 @@ public class FileSliceUtil {
      * @param count  the number of splitting file
      */
     public static void sliceFile(String filePath, int count) {
-
+        // TODO add functions.
     }
 }

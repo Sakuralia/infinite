@@ -10,6 +10,7 @@
     <modules>
         <module>infinite-common-web</module>
         <module>infinite-common-job</module>
+        <module>infinite-common-dubbo</module>
     </modules>
     <artifactId>infinite-common</artifactId>
     <packaging>pom</packaging>

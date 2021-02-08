@@ -30,7 +30,9 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
-        if (iUserDetailApi.verifyUser(name, password)) {
+        // TODO  add to get the data of salt
+        String salt = "";
+        if (iUserDetailApi.verifyUser(name, password, salt)) {
             List<GrantedAuthority> authorities = new ArrayList<>();
             authorities.add(new SimpleGrantedAuthority("user"));
 

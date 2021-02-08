@@ -1,5 +1,7 @@
 package io.adana.infinite.user.api;
 
+import io.adana.infinite.user.domain.vo.UserVo;
+
 /**
  * @author sakura
  * @version 1.0
@@ -14,7 +16,7 @@ public interface IUserDetailApi {
      * @param password 密码
      * @return true or false
      */
-    Boolean verifyUser(String name, String password);
+    Boolean verifyUser(String name, String password, String salt);
 
     /**
      * 根据用户名获取用户详情
@@ -22,5 +24,5 @@ public interface IUserDetailApi {
      * @param userName 用户名
      * @return 用户对象
      */
-    Object getUserDetail(String userName);
+    UserVo getUserDetail(String userName);
 }
