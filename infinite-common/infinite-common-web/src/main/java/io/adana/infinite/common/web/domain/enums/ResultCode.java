@@ -13,6 +13,7 @@ public enum ResultCode {
     RESULT_ERROR(5000, "service error"),
     RESULT_OK(0, "success"),
     RESULT_EXIST(9999, "the recode exists"),
+    RESULT_OPERATE_FREQUENTLY(1111, "the operation is frequent"),
     //============== service ===============
 
     //============== user ==================

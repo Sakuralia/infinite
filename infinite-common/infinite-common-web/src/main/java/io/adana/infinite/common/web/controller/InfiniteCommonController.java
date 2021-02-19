@@ -1,6 +1,5 @@
 package io.adana.infinite.common.web.controller;
 
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import io.adana.infinite.common.web.domain.enums.ResultCode;
 import io.adana.infinite.common.web.exception.BaseResponse;
 
@@ -11,7 +10,7 @@ import io.adana.infinite.common.web.exception.BaseResponse;
  * @description CommonInfController
  * @Scope
  */
-public abstract class CommonInfController<T> {
+public abstract class InfiniteCommonController<T> {
 
     protected BaseResponse<T> success() {
         return BaseResponse.success();
