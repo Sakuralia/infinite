@@ -25,7 +25,7 @@
         <servlet.api.version>4.0.1</servlet.api.version>
         <mybatis-plus.version>3.3.2</mybatis-plus.version>
         <jjwt.version>0.9.0</jjwt.version>
-        <hibernate-validator.version>6.1.0.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
         <validate.api.version>2.0.1.Final</validate.api.version>
         <joda.time.version>2.9.9</joda.time.version>
         <mysql.version>8.0.16</mysql.version>
